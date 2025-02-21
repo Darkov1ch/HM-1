@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зроби це зараз - Інтерактивна книга</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="book">
+        <div class="page" id="page-1">
+            <h1>Зроби це зараз</h1>
+            <p>21 чудовий спосіб досягти успіху. Почніть свій шлях сьогодні!</p>
+            <button onclick="nextPage()">Почати читання</button>
+        </div>
+        <div class="page" id="page-2">
+            <h2>Накрийте на стіл</h2>
+            <p>Чітке визначення цілей – перший крок до успіху. Записуйте свої цілі на папері та встановлюйте дедлайни.</p>
+            <blockquote>“Студенти, які вчаться 14 годин на тиждень, обов’язково знаходять роботу.”</blockquote>
+            <div class="navigation">
+                <button onclick="prevPage()">Назад</button>
+                <button onclick="nextPage()">Вперед</button>
+            </div>
+        </div>
+        <div class="page" id="page-3">
+            <h2>Підсумок</h2>
+            <p>Ви ближче до успіху, ніж думаєте! Не відкладайте – дійте зараз!</p>
+            <div class="navigation">
+                <button onclick="prevPage()">Назад</button>
+                <button onclick="restart()">Почати спочатку</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
