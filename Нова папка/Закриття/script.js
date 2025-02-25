@@ -1,9 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     const book = document.querySelector(".book");
     const pageContent = document.getElementById("page-content");
     const leftArea = document.querySelector(".click-area.left");
     const rightArea = document.querySelector(".click-area.right");
-    const coverImage = document.querySelector("#book-cover img");
 
     const pages = [
         "Накрийте на стіл: Чітке визначення цілей – перший крок до успіху. Записуйте свої цілі на папері та встановлюйте дедлайни.",
@@ -18,66 +18,52 @@ document.addEventListener("DOMContentLoaded", () => {
         "Якщо Ваш внутрішній голос – це Ви, то хто ж тоді слухає?"
     ];
 
-    const images = [
-        "I1.png", "I2.png", "I3.png", "I4.png", "I5.png",
-        "I6.png", "I7.png", "I8.png", "I9.png"
-    ];
-
     let currentPage = 0;
 
     function showPage(index) {
         const parts = pages[index].split(": ");
         pageContent.innerHTML = `<h1>${parts[0]}</h1><p>${parts[1] || ""}</p>`;
-        if (index < images.length) {
-            coverImage.src = images[index]; // Змінюємо обкладинку відповідно до індексу сторінки
-        }
     }
 
+    // Відкриття та закриття книги
     book.addEventListener("click", () => {
         if (!book.classList.contains("open")) {
             book.classList.add("open");
             showPage(currentPage);
         } else if (currentPage === 0) {
             book.classList.remove("open");
-            coverImage.src = "image.png"; // Початкова обкладинка при закритті книги
         }
     });
 
+    // Перегортання сторінок праворуч
     rightArea.addEventListener("click", (event) => {
-        event.stopPropagation();
+        event.stopPropagation(); 
         if (currentPage < pages.length - 1) {
             currentPage++;
             showPage(currentPage);
-            book.classList.add("flip-right");
-            setTimeout(() => book.classList.remove("flip-right"), 1000);
         }
     });
 
+    // Перегортання сторінок ліворуч
     leftArea.addEventListener("click", (event) => {
         event.stopPropagation();
         if (currentPage > 0) {
             currentPage--;
             showPage(currentPage);
-            book.classList.add("flip-left");
-            setTimeout(() => book.classList.remove("flip-left"), 1000);
         }
     });
 
+    // Перегортання сторінок за допомогою стрілок на клавіатурі
     document.addEventListener("keydown", (event) => {
         if (book.classList.contains("open")) {
             if (event.key === "ArrowRight" && currentPage < pages.length - 1) {
                 currentPage++;
                 showPage(currentPage);
-                book.classList.add("flip-right");
-                setTimeout(() => book.classList.remove("flip-right"), 1000);
             } else if (event.key === "ArrowLeft" && currentPage > 0) {
                 currentPage--;
                 showPage(currentPage);
-                book.classList.add("flip-left");
-                setTimeout(() => book.classList.remove("flip-left"), 1000);
             } else if (event.key === "Escape" && currentPage === 0) {
                 book.classList.remove("open");
-                coverImage.src = "image.png";
             }
         }
     });

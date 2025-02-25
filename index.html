@@ -1,38 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Зроби це зараз - Інтерактивна книга</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="book">
-        <div class="page" id="page-1">
-            <h1>Зроби це зараз</h1>
-            <p>21 чудовий спосіб досягти успіху. Почніть свій шлях сьогодні!</p>
-            <button onclick="nextPage()">Почати читання</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Анімація книги</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="book" id="book">
+      <div class="cover" id="book-cover">
+        <img src="image.png" alt="Зроби це зараз - Браян Трейсі" />
+      </div>
+      <div class="pages" id="book-pages">
+        <div class="click-area left"></div>
+        <div class="click-area right"></div>
+        <div class="content" id="page-content">
+          <h1>Зміст книги</h1>
+          <p>Це приклад тексту, який з’являється всередині книги.</p>
         </div>
-        <div class="page" id="page-2">
-            <h2>Накрийте на стіл</h2>
-            <p>Чітке визначення цілей – перший крок до успіху. Записуйте свої цілі на папері та встановлюйте дедлайни.</p>
-            <blockquote>“Студенти, які вчаться 14 годин на тиждень, обов’язково знаходять роботу.”</blockquote>
-            <div class="navigation">
-                <button onclick="prevPage()">Назад</button>
-                <button onclick="nextPage()">Вперед</button>
-            </div>
-        </div>
-        <div class="page" id="page-3">
-            <h2>Підсумок</h2>
-            <p>Ви ближче до успіху, ніж думаєте! Не відкладайте – дійте зараз!</p>
-            <div class="navigation">
-                <button onclick="prevPage()">Назад</button>
-                <button onclick="restart()">Почати спочатку</button>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,159 @@
+/* Загальний фон сторінки (темний) */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a; /* Темний фон */
+    overflow: hidden;
+    color: #000000;
+}
+
+/* Область книги (біла) */
+.book {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    cursor: pointer;
+    perspective: 1000px;
+    transition: all 0.5s ease;
+    background-color: #ffffff; /* Білий фон книги */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Світлий ефект тіні для контрасту */
+}
+
+/* Обкладинка та сторінки */
+.cover, .pages {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #333;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 1s ease;
+    transform-origin: left center;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.book:hover .cover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* Світла тінь при наведенні */
+}
+
+.pages {
+    background-color: #ffffff; /* Білий фон сторінок */
+    display: none;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    color: #000000; /* Чорний текст */
+}
+
+/* Стиль тексту на сторінках */
+.pages .content {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* Область кліку */
+.click-area {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+    background: transparent;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+/* Анімація відкриття книги */
+.book.open .cover {
+    transform: rotateY(-160deg);
+    transition: transform 1.5s ease;
+}
+
+.book.open .pages {
+    display: block;
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Область кліку та стрілочки внизу сторінки */
+.click-area {
+    position: absolute;
+    bottom: 10px;  /* Розташування стрілок у нижній частині */
+    width: 50%;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    opacity: 0.5; /* Початкова прозорість */
+}
+
+/* Ліва стрілочка */
+.left {
+    left: 0;
+    justify-content: flex-start; /* Розташування лівої стрілки зліва */
+    padding-left: 10px;
+}
+
+.left::before {
+    content: '◄';
+    font-size: 40px;
+    color: #333333;
+    transition: transform 0.3s ease;
+}
+
+.left:hover::before {
+    transform: translateX(-5px); /* Легка анімація при наведенні */
+}
+
+/* Права стрілочка */
+.right {
+    right: 0;
+    justify-content: flex-end; /* Розташування правої стрілки справа */
+    padding-right: 10px;
+}
+
+.right::before {
+    content: '►';
+    font-size: 40px;
+    color: #333333;
+    transition: transform 0.3s ease;
+}
+
+.right:hover::before {
+    transform: translateX(5px); /* Легка анімація при наведенні */
+}
+
+/* Для мобільних пристроїв */
+@media (max-width: 600px) {
+    .left::before, .right::before {
+        font-size: 30px; /* Менші стрілочки для мобільних пристроїв */
+    }
+}
